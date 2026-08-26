@@ -7,6 +7,8 @@ class Node {
         this.data = data;
         this.right = null;
         this.left = null;
+        this.start = start;
+        this.end = end;
     }
 
     
@@ -22,6 +24,11 @@ class Tree {
 }
 
 function buildTree(array) {
+    //call removeDupesAndSort, wait for return val, store returned val in sorted
+    //removeDupesAndSort is hoisted so it should be fine to have the reference up here
+    let sortedArr = removeDupesAndSort(array);
+
+    console.log(sortedArr);
 
     function removeDupesAndSort(arr) {
 
@@ -30,13 +37,15 @@ function buildTree(array) {
         let filteredArr = arr.filter((item, index) => arr.indexOf(item) === index);
         //.sort() method alone bc it converts value to string and sorts lexographically
         //.sort with a compare function, if value comes out negative then a comes before b, if the value comes out positive a comes after b
-        let sortedArr = [...filteredArr].sort((a, b) => a - b);
+        let sortedFilteredArr = [...filteredArr].sort((a, b) => a - b);
 
-        return sortedArr;
+        return sortedFilteredArr;
 
     }
 
-    let sortedArr = removeDupesAndSort(array);
+    let mid = sortedArr.
+
+    
 
 
 
@@ -46,3 +55,7 @@ function buildTree(array) {
 
 
 }
+
+
+
+const exampleArray = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
