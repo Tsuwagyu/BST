@@ -23,20 +23,22 @@ class Tree {
 
 function buildTree(array) {
 
-    let arr = array;
-
-    function removeDupesAndSort() {
+    function removeDupesAndSort(arr) {
 
         // filter checks if the index of the first occurence is matching with the current index
         // indexOf finds the position of the first occurence of a specified value within arr or string
-        let noDupes = arr.filter((item, index) => arr.indexOf(item) === index);
+        let filteredArr = arr.filter((item, index) => arr.indexOf(item) === index);
         //.sort() method alone bc it converts value to string and sorts lexographically
         //.sort with a compare function, if value comes out negative then a comes before b, if the value comes out positive a comes after b
-        let sortedArr = [...noDupes].sort((a, b) => a - b);
+        let sortedArr = [...filteredArr].sort((a, b) => a - b);
 
         return sortedArr;
 
     }
+
+    let sortedArr = removeDupesAndSort(array);
+
+
 
 
 
