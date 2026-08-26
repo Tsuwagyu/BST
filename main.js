@@ -48,7 +48,7 @@ function buildTree(array) {
     if (n === 0) return null;
     // n - 1 because indeces start at 0, .length gives us total number of items in the array so we need to remove 1 to get the right indeces count
     let mid = Math.floor((n - 1) / 2);
-    let root = newNode(arr[mid]);
+    let root = new Node(arr[mid]);
 
     
 
