@@ -20,19 +20,26 @@ class Tree {
     }
 }
  // added recursive function before buildTree so i can use it in btw
-function recursiveBST(arr,start,end) {
-    
-    let mid = start + Math.floor((end - start) / 2);
-    let root = new Node(arr[mid]); 
-    
-    
-    // bst using everything to the left of the current middle
-    root.left = buildTree(arr, start, mid - 1);
+function recursiveBST(arr, start, end) {
 
-    //bst using everything to the right of the current middle
-    root.right = buildTree(arr, mid + 1, end); 
+    console.log({start, end});
 
-    return root;
+    if (start > end) return null;
+
+    else {
+    
+        let mid = start + Math.floor((end - start) / 2);
+        // every recursive call will have its OWN local var named root
+        const root = new Node(arr[mid]); 
+        
+        // bst using everything to the left of the current middle
+        root.left = recursiveBST(arr, start, mid - 1);
+
+        //bst using everything to the right of the current middle
+        root.right = recursiveBST(arr, mid + 1, end); 
+
+        return root;
+    }
 
 }
 
@@ -70,7 +77,7 @@ function buildTree(array) {
 
 
 
-const exampleArray = [1, 7, 4, 23, 8, 9, 4, 3, 5, 7, 9, 67, 6345, 324];
+const exampleArray = [1, 5, 9, 14, 23, 27];
 
 const tree = buildTree(exampleArray);
 
