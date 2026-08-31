@@ -7,8 +7,6 @@ class Node {
         this.data = data;
         this.right = null;
         this.left = null;
-        this.start = start;
-        this.end = end;
     }
 
     
@@ -21,7 +19,7 @@ class Tree {
         this.root = buildTree(arr);
     }
 }
-
+ // added recursive function before buildTree so i can use it in btw
 function recursiveBST(arr,start,end) {
     
     let mid = start + Math.floor((end - start) / 2);
