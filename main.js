@@ -23,6 +23,22 @@ class Tree {
     }
 }
 
+function recursiveBST(arr,start,end) {
+    
+    let mid = start + math.floor((end - start) / 2);
+    let root = new Node(arr[mid]); 
+    
+    
+    // bst using everything to the left of the current middle
+    root.left = buildTree(array, start, mid - 1);
+
+    //bst using everything to the right of the current middle
+    root.right = buildTree(array, mid + 1, end); 
+
+    return root;
+
+}
+
 function buildTree(array) {
     //call removeDupesAndSort, wait for return val, store returned val in sorted
     //removeDupesAndSort is hoisted so it should be fine to have the reference up here
@@ -50,13 +66,7 @@ function buildTree(array) {
     // n - 1 because indeces start at 0, .length gives us total number of items in the array so we need to remove 1 to get the right indeces count
     let mid = Math.floor((n - 1) / 2);
     let root = new Node(sortedArr[mid]);
-
     
-
-
-
-
-
 
 
 
