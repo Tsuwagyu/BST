@@ -79,6 +79,8 @@ function includes(value) {
 
     // start at main node when comparing value and node data
 
+    let currentNode = this.root;
+
     if (currentNode.data === value) return true;
 
     return search(currentNode, value);
