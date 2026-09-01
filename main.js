@@ -103,6 +103,18 @@ function buildTree(array) {
 
 }
 
+// given root of bst and integer x, delete node w val x from bst while maintaining bst property
+
+function deleteItem(value) {
+
+    //leaf node set to null
+
+    //parent node with single child, set node to be removed to null and connect the child to the parent
+
+    //parent with 2 children, switch with its in order successor or predecessor successor, set old node to null
+
+}
+
 const tree = new Tree([1, 5, 9, 14, 23, 27]);
 
 console.log(tree.includes(1));
