@@ -18,8 +18,36 @@ class Tree {
         // buildTree(arr) returns root node of complete BST, return value gets assigned to this.root
         this.root = buildTree(arr);
     }
+
+    includes(value) {
+
+        // start at main node when comparing value and node data
+
+        let currentNode = this.root;
+
+        return search(currentNode, value);
+
+        function search(currentNode, targetVal) {
+            if (currentNode === null) return false;
+
+            if (currentNode.data === targetVal) return true;
+
+            if (currentNode.data > targetVal) {
+                return search(currentNode.left, targetVal);
+            }
+
+            if (currentNode.data < targetVal) {
+                return search(currentNode.right, targetVal);
+            }
+
+        }
+
+
+    }
 }
- // added recursive function before buildTree so i can use it in btw
+
+
+ // added recursive function before buildTree so i can use it in bt
 function recursiveBST(arr, start, end) {
 
     console.log({start, end});
@@ -29,7 +57,7 @@ function recursiveBST(arr, start, end) {
     else {
     
         let mid = start + Math.floor((end - start) / 2);
-        // every recursive call will have its OWN local var named root
+        // every recursive call will have its OWN local var named root which is a node object
         const root = new Node(arr[mid]); 
         
         // bst using everything to the left of the current middle
@@ -75,47 +103,6 @@ function buildTree(array) {
 
 }
 
-function includes(value) {
+const tree = new Tree([1, 5, 9, 14, 23, 27]);
 
-    // start at main node when comparing value and node data
-
-    let currentNode = this.root;
-
-    if (currentNode.data === value) return true;
-
-    return search(currentNode, value);
-
-    function search(currentNode, targetVal) {
-        if (currentNode === null) return false;
-
-        if (currentNode.data === targetVal) return true;
-
-        if (currentNode.data > targetVal) {
-            return search(currentNode.left, targetVal);
-        }
-
-        if (currentNode.data < targetVal) {
-            return search(currentNode.right, targetVal);
-        }
-
-
-
-
-
-    }
-
-    
-    
-    
-    
-
-
-}
-
-
-
-const exampleArray = [1, 5, 9, 14, 23, 27];
-
-const tree = buildTree(exampleArray);
-
-console.log(tree);
+console.log(tree.includes(1));
