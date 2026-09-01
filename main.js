@@ -78,19 +78,25 @@ function buildTree(array) {
 function includes(value) {
 
     // start at main node when comparing value and node data
-    
-    let currentNode = this.root;
-
-    if (currentNode === null) return null;
 
     if (currentNode.data === value) return true;
 
-    return search(value, currentNode);
+    return search(currentNode, value);
 
-    function search(targetVal, currentNode) {
+    function search(currentNode, targetVal) {
         if (currentNode === null) return false;
 
-        if (currentNode === targetVal) return true;
+        if (currentNode.data === targetVal) return true;
+
+        if (currentNode.data > targetVal) {
+            return search(currentNode.left, targetVal);
+        }
+
+        if (currentNode.data < targetVal) {
+            return search(currentNode.right, targetVal);
+        }
+
+
 
 
 
