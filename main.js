@@ -150,6 +150,31 @@ function getSuccessor(currNode) {
 
 }
 
+function deleteNode(root, value) {
+    // if there's no node return null, guard clause for recurive portion
+    if (root === null) return null;
+    // if node val higher than target val go to the left branch and find the value and delete it and store it in root.left
+    if (root.data > value) {
+        root.left = deleteNode(root.left, value);
+    } // if node val is less than targetval go into right subtree and delete the right value in there and store it in root.right property
+    else if (root.data < value) {
+        root.right = deleteNode(root.right, value);
+    }
+
+    // if node's left or right branch is null, the only subtree that exists is the other one
+    else {
+        // if left node is deleted, then the parent must point to its right
+        if (root.left === null) return root.right;
+        if (root.right === null) return root.left;
+
+        const successor = getSuccessor(root);
+        // copy successor's value into the current node
+        root.data = successor.data;
+        //go into right subtree and find original node with successor.data and delete it and return what the right subtree should now start with
+        root.right = deleteNode(root.right, successor.data);
+    }
+}
+
 // given root of bst and integer x, delete node w val x from bst while maintaining bst property
 
 
