@@ -44,6 +44,36 @@ class Tree {
 
 
     }
+
+    deleteItem(value) {
+
+        let currentNode = this.root;
+
+        return searchAndDelete(currentNode, value);
+        
+        function searchAndDelete(currentNode, targetVal) {
+
+            if (currentNode === null) return false;
+
+            if (currentNode.data === targetVal) {
+                currentNode.data = null;
+            }
+
+            if (currentNode.data > targetVal) {
+                return search(currentNode.left, targetVal);
+            }
+
+            if (currentNode.data < targetVal) {
+                return search(currentNode.right, targetVal);
+            }
+
+        }
+
+
+
+        
+
+    }
 }
 
 
@@ -103,17 +133,25 @@ function buildTree(array) {
 
 }
 
-// given root of bst and integer x, delete node w val x from bst while maintaining bst property
+function getSuccessor(currNode) {
 
-function deleteItem(value) {
+    // take the passed in Node, and go to the right
 
-    //leaf node set to null
+    currNode = currNode.right;
 
-    //parent node with single child, set node to be removed to null and connect the child to the parent
+    // inside the right subtree of bst, go to the furthest left node
 
-    //parent with 2 children, switch with its in order successor or predecessor successor, set old node to null
+    while (currNode !== null && currNode.left !=null) {
+        currNode = currNode.left;
+    }
+    // now we have smallest node in the right subtree 
+    return currNode;
+
 
 }
+
+// given root of bst and integer x, delete node w val x from bst while maintaining bst property
+
 
 const tree = new Tree([1, 5, 9, 14, 23, 27]);
 
