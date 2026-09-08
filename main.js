@@ -61,7 +61,34 @@ class Tree {
     // node with 1 child
     // node without either
 
-   // deleteItem(value) {
+   deleteItem(value) {
+
+        let currentNode = this.root;
+
+        if (currentNode.data === value) {
+            // call checkChild()
+
+            checkChild(currentNode);
+        }
+
+        function checkChild(node) {
+            if (node.right !== null || node.left !== null) {
+                return "both";
+            }
+
+            if (node.right === null && node.left === null) {
+                return "no children";
+            }
+
+            if (node.right !== null && node.left === null) {
+                return "child on right";
+            }
+
+            if (node.right === null && node.left !== null) {
+                return "child on left";
+            }
+        } 
+    }
 
 }
 
