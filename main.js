@@ -65,10 +65,42 @@ class Tree {
 
         let currentNode = this.root;
 
-        if (currentNode.data === value) {
-            // call checkChild()
+        if (currentNode === null) return;
 
-            checkChild(currentNode);
+        // if curretNode.data matches value then check if it has children first
+
+        if (currentNode.data === value) {
+
+            // call checkChild() to check for children
+
+            const childStatus = checkChild(currentNode);
+
+            switch (childStatus) {
+                case "no children":
+                    return this.root = null;
+                
+
+                case "child on right":
+                    this.root = currentNode.right;
+                   return this.root;
+                
+
+                case "child on left":
+                    this.root = currentNode.left;
+                    return this.root;
+
+                case "both": {
+                    let successorNode = getSuccessor(currentNode);
+                    currentNode.data = successorNode.data;
+                    let returnedRoot = deleteNode(currentNode.right, successorNode.data);
+                    currentNode.right = returnedRoot;
+                    return currentNode;
+                }
+                default: 
+                    return; 
+                    
+            }
+
         }
 
         function checkChild(node) {
