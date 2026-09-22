@@ -55,72 +55,11 @@ class Tree {
 
 
     }
-
-    // accept value and remove from tree 3 cases to handle
-    // node with 2 children
-    // node with 1 child
-    // node without either
-
-   deleteItem(value) {
-
-        let currentNode = this.root;
-
-        if (currentNode === null) return;
-
-        // if curretNode.data matches value then check if it has children first
-
-        if (currentNode.data === value) {
-
-            // call checkChild() to check for children
-
-            const childStatus = checkChild(currentNode);
-
-            switch (childStatus) {
-                case "no children":
-                    return this.root = null;
-                
-
-                case "child on right":
-                    this.root = currentNode.right;
-                   return this.root;
-                
-
-                case "child on left":
-                    this.root = currentNode.left;
-                    return this.root;
-
-                case "both": {
-                    let successorNode = getSuccessor(currentNode);
-                    currentNode.data = successorNode.data;
-                    let returnedRoot = deleteNode(currentNode.right, successorNode.data);
-                    currentNode.right = returnedRoot;
-                    return currentNode;
-                }
-                default: 
-                    return; 
-                    
-            }
-
-        }
-
-        function checkChild(node) {
-            if (node.right !== null || node.left !== null) {
-                return "both";
-            }
-
-            if (node.right === null && node.left === null) {
-                return "no children";
-            }
-
-            if (node.right !== null && node.left === null) {
-                return "child on right";
-            }
-
-            if (node.right === null && node.left !== null) {
-                return "child on left";
-            }
-        } 
+    //deleteNode removes requested value and returns the root of the remaining tree > this.root points to where the tree starts after deletion
+    deleteItem(value) {
+        this.root = deleteNode(this.root, value);
     }
+
 
 }
 
@@ -209,7 +148,7 @@ function deleteNode(root, value) {
     if (root.data > value) {
         root.left = deleteNode(root.left, value);
     }
-     // if node val is less than targetval, go to right subtree and find the new value for the root to reonnect later
+     // if node val is less than targetval, go to right subtree and find the new value for the root to reconnect later
     else if (root.data < value) {
         root.right = deleteNode(root.right, value);
     }
