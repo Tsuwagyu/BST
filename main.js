@@ -200,33 +200,14 @@ function deleteNode(root, value) {
     return root;
 }
 
-function insertAt(value) {
+function levelOrderForEach(callback) {
 
-    // if we already have the value return
-    if (this.includes(value)) return;
-    // take the node that insertNode call returns and assign to this.root
-    this.root = insertNode(this.root, value);
+    if (callback === null) throw new Error("Callback is required");
 
-    function insertNode(currentNode) {
-        
+    const queue = [];
+    const visited = [];
 
-        // if root node or child node is null, create node for empty spot
-        if (currentNode === null) {
-            return new Node(value);
-        }
-        
-        // if the currentNode data property is greater than the value, the go to the left 
-        if (currentNode.data > value) {
-            currentNode.left = insertNode(currentNode.left);
-            return currentNode;
-        }
-        // if the currentNode data property is less than the value, go to the right
-
-        if (currentNode.data < value) {
-            currentNode.right = insertNode(currentNode.right);
-            return currentNode;
-        }
-    }
+    
 
 }
     
@@ -235,5 +216,5 @@ function insertAt(value) {
 
 
 const tree = new Tree([1, 5, 9, 14, 23, 27]);
-
-console.log(tree.includes(1));
+tree.insertAt(15);
+console.log(tree.includes(15));
