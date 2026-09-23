@@ -175,21 +175,25 @@ function insertAt(value) {
     // starting at main node
 
     let currentNode = this.root;
-
-    // recursive portion
+    // if we already have the value return
+    if (this.includes(value)) return;
+    // take the node that insertNode call returns and assign to this.root
+    this.root = insertNode(this.root, value);
 
     function insertNode() {
+        
 
+        // if root node or child node is null, create node for empty spot
         if (currentNode === null) {
             return new Node(value);
         }
 
-        // if the currentNode data property matches the value then return true
-
-        if (currentNode.data === value) return true;
+        // if the currentNode data property matches the value then return since it's already there
+        if (currentNode.data === value) return;
+        
         // if the currentNode data property is greater than the value, the go to the left 
         if (currentNode.data > value) {
-            return search(currentNode.left, value);
+            return currentNode.left = insertNode(currentNode.left, value);
         }
         // if the currentNode data property is less than the value, go to the right
 
