@@ -60,8 +60,38 @@ class Tree {
         this.root = deleteNode(this.root, value);
     }
 
+    insertAt(value) {
+
+        // if we already have the value return
+        if (this.includes(value)) return;
+        // take the node that insertNode call returns and assign to this.root
+        this.root = insertNode(this.root, value);
+
+        function insertNode(currentNode) {
+            
+
+            // if root node or child node is null, create node for empty spot
+            if (currentNode === null) {
+                return new Node(value);
+            }
+            
+            // if the currentNode data property is greater than the value, the go to the left 
+            if (currentNode.data > value) {
+                currentNode.left = insertNode(currentNode.left);
+                return currentNode;
+            }
+            // if the currentNode data property is less than the value, go to the right
+
+            if (currentNode.data < value) {
+                currentNode.right = insertNode(currentNode.right);
+                return currentNode;
+            }
+        }
+    }
+        
 
 }
+
 
 // each call to recrusiveBST() chooses the midpoint of the current range, creates a node, then recursively builds that node's left and right subtrees
 function recursiveBST(arr, start, end) {
@@ -170,7 +200,7 @@ function deleteNode(root, value) {
     return root;
 }
 
-function insertAt() {
+function insertAt(value) {
 
     // if we already have the value return
     if (this.includes(value)) return;
@@ -187,13 +217,13 @@ function insertAt() {
         
         // if the currentNode data property is greater than the value, the go to the left 
         if (currentNode.data > value) {
-            currentNode.left = insertNode(currentNode.left, value);
+            currentNode.left = insertNode(currentNode.left);
             return currentNode;
         }
         // if the currentNode data property is less than the value, go to the right
 
         if (currentNode.data < value) {
-            currentNode.right = insertNode(currentNode.right, value);
+            currentNode.right = insertNode(currentNode.right);
             return currentNode;
         }
     }
