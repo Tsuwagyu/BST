@@ -210,9 +210,21 @@ function levelOrderForEach(callback) {
     
 
 }
+
+// traverse the BST, going through each node and logging it's data property
+
+function logNodeData(node) {
+    
+    let currentNode = this.root;
+    if (currentNode === null) return;
+    console.log(node.data);
+
+    function nodeTraversal() {
+        // recursively do the same for the rest of the nodes
+    }
     
 
-
+}
 
 
 const tree = new Tree([1, 5, 9, 14, 23, 27]);
