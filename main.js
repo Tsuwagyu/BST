@@ -176,21 +176,26 @@ function insertAt(value) {
 
     let currentNode = this.root;
 
-    // if no starting node exists return false
+    // recursive portion
 
-    if (currentNode === null) return false; 
+    function insertNode() {
 
-    // if the currentNode data property matches the value then return true
+        if (currentNode === null) {
+            return new Node(value);
+        }
 
-    if (currentNode.data === value) return true;
-    // if the currentNode data property is greater than the value, the go to the left 
-    if (currentNode.data > value) {
-        return search(currentNode.left, value);
-    }
-    // if the currentNode data property is less than the value, go to the right
+        // if the currentNode data property matches the value then return true
 
-    if (currentNode.data < value) {
-        return search(currentNode.right, value);
+        if (currentNode.data === value) return true;
+        // if the currentNode data property is greater than the value, the go to the left 
+        if (currentNode.data > value) {
+            return search(currentNode.left, value);
+        }
+        // if the currentNode data property is less than the value, go to the right
+
+        if (currentNode.data < value) {
+            return search(currentNode.right, value);
+        }
     }
 
 }
