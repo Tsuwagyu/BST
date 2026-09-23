@@ -170,7 +170,7 @@ function deleteNode(root, value) {
     return root;
 }
 
-function insertAt(value) {
+function insertAt() {
 
     // if we already have the value return
     if (this.includes(value)) return;
