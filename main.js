@@ -220,10 +220,16 @@ function logNodeData(currentNode) {
         nodeTraversal(currentNode);
     }
     
-
+    // logNodeData hands nodeTraversal the currentNode to do something with it 
     function nodeTraversal(node) {
 
+        if (node === null) return;
+
         console.log(node.data);
+
+        nodeTraversal(node.left.data);
+
+        nodeTraversal(node.right.data);
         
     }
     
