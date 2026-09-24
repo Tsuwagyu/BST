@@ -96,7 +96,6 @@ class Tree {
 // each call to recrusiveBST() chooses the midpoint of the current range, creates a node, then recursively builds that node's left and right subtrees
 function recursiveBST(arr, start, end) {
 
-    console.log({start, end});
     // base case
     if (start > end) return null;
 
@@ -135,7 +134,6 @@ function buildTree(array) {
         let filteredArr = arr.filter((item, index) => arr.indexOf(item) === index);
         // take the filtered array -> get new array using spread operator with the same items in it ->  pass in comparison func to sort in ascending order
         let sortedFilteredArr = filteredArr.sort((a, b) => a - b);
-        console.log(sortedFilteredArr);
         //we now return an array thats void of duplicates and its in order left to right 
         return sortedFilteredArr;
 
@@ -225,11 +223,11 @@ function logNodeData(currentNode) {
 
         if (node === null) return;
 
+        nodeTraversal(node.left);
+
         console.log(node.data);
 
-        nodeTraversal(node.left.data);
-
-        nodeTraversal(node.right.data);
+        nodeTraversal(node.right);
         
     }
     
@@ -237,6 +235,6 @@ function logNodeData(currentNode) {
 }
 
 
-const tree = new Tree([1, 5, 9, 14, 23, 27]);
-tree.insertAt(15);
-console.log(tree.includes(15));
+const tree = new Tree([1, 9, 15, 17, 20]);
+
+console.log(logNodeData(tree.root));
