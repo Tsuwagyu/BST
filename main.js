@@ -203,8 +203,8 @@ function levelOrderForEach(callback) {
     if (callback === null) throw new Error("Callback is required");
 
     const queue = [];
-    const visited = [];
 
+        
     
 
 }
@@ -214,22 +214,8 @@ function levelOrderForEach(callback) {
 function logNodeData(currentNode) {
 
     if (currentNode === null) return;
-    else {
-        nodeTraversal(currentNode);
-    }
-    
-    // logNodeData hands nodeTraversal the currentNode to do something with it 
-    function nodeTraversal(node) {
 
-        if (node === null) return;
-
-        nodeTraversal(node.left);
-
-        console.log(node.data);
-
-        nodeTraversal(node.right);
-        
-    }
+    console.log(currentNode.data);
     
 
 }
