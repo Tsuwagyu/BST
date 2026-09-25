@@ -13,7 +13,7 @@ class Node {
         this.left = null;
     }
 
-    
+
 }
 
 class Tree {
@@ -36,7 +36,7 @@ class Tree {
         function search(currentNode, targetVal) {
 
             // base cases
-            if (currentNode === null) return false; 
+            if (currentNode === null) return false;
 
             if (currentNode.data === targetVal) return true;
 
@@ -46,7 +46,7 @@ class Tree {
             if (currentNode.data > targetVal) {
                 return search(currentNode.left, targetVal);
             }
-            // if the node data doesnt match go to its right branch and check there 
+            // if the node data doesnt match go to its right branch and check there
             if (currentNode.data < targetVal) {
                 return search(currentNode.right, targetVal);
             }
@@ -68,14 +68,14 @@ class Tree {
         this.root = insertNode(this.root, value);
 
         function insertNode(currentNode) {
-            
+
 
             // if root node or child node is null, create node for empty spot
             if (currentNode === null) {
                 return new Node(value);
             }
-            
-            // if the currentNode data property is greater than the value, the go to the left 
+
+            // if the currentNode data property is greater than the value, the go to the left
             if (currentNode.data > value) {
                 currentNode.left = insertNode(currentNode.left);
                 return currentNode;
@@ -88,7 +88,7 @@ class Tree {
             }
         }
     }
-        
+
 
 }
 
@@ -106,13 +106,13 @@ function recursiveBST(arr, start, end) {
         let mid = start + Math.floor((end - start) / 2);
         // every recursive call will have its OWN local var named root which is a node object
         // root will store the Node object made with the mid calculated earlier
-        const root = new Node(arr[mid]); 
-        
+        const root = new Node(arr[mid]);
+
         // bst using everything to the left of mid not including mid. recursively builds the left subtree from the portion of the array left of mid
         root.left = recursiveBST(arr, start, mid - 1);
 
         //bst using everything to the right of the current middle not including mid. recursively builds the righ subtree from the portion of the array right of mid
-        root.right = recursiveBST(arr, mid + 1, end); 
+        root.right = recursiveBST(arr, mid + 1, end);
 
         // root.left and root.right now contain the roots of the recursively built subtrees or `null` if no subtree exists (thanks to the constructor default values)
         return root;
@@ -123,7 +123,7 @@ function recursiveBST(arr, start, end) {
 function buildTree(array) {
 
     //call removeDupesAndSort, wait for return val, store returned val in sortedArr
-    
+
     let sortedArr = removeDupesAndSort(array);
 
 
@@ -134,7 +134,7 @@ function buildTree(array) {
         let filteredArr = arr.filter((item, index) => arr.indexOf(item) === index);
         // take the filtered array -> get new array using spread operator with the same items in it ->  pass in comparison func to sort in ascending order
         let sortedFilteredArr = filteredArr.sort((a, b) => a - b);
-        //we now return an array thats void of duplicates and its in order left to right 
+        //we now return an array thats void of duplicates and its in order left to right
         return sortedFilteredArr;
 
     }
@@ -145,7 +145,7 @@ function buildTree(array) {
     if (n === 0) return null;
 
     // build the tree using recursiveBST to process the sortedArr from its start till its end
-    
+
     return recursiveBST(sortedArr, 0, sortedArr.length - 1);
 
 
@@ -172,7 +172,7 @@ function getSuccessor(currNode) {
 function deleteNode(root, value) {
     // if there's no node return null, guard clause for recursive portion
     if (root === null) return null;
-    // if the current node value is greater than the one we're looking for, go to its left subtree and get its new root to reconnect it later 
+    // if the current node value is greater than the one we're looking for, go to its left subtree and get its new root to reconnect it later
     if (root.data > value) {
         root.left = deleteNode(root.left, value);
     }
@@ -187,7 +187,7 @@ function deleteNode(root, value) {
         if (root.left === null) return root.right;
         // if right node is deleted/missing, replace this node with whatever is on the left
         if (root.right === null) return root.left;
-        //store the successor node in the successor 
+        //store the successor node in the successor
         const successor = getSuccessor(root);
         // copy successor's value into the current node
         root.data = successor.data;
@@ -202,10 +202,30 @@ function levelOrderForEach(callback) {
 
     if (callback === null) throw new Error("Callback is required");
 
+
     const queue = [];
 
-        
-    
+    function levelOrderHandler(node) {
+
+    if (this.root === null) {
+       return;
+    }
+
+        if (node !== null) {
+
+            queue.push(node);
+            queue.shift(node);
+            logNodeData(node);
+
+        }
+
+        levelOrderHandler(node.left);
+    }
+
+
+
+
+
 
 }
 
@@ -216,7 +236,7 @@ function logNodeData(currentNode) {
     if (currentNode === null) return;
 
     console.log(currentNode.data);
-    
+
 
 }
 
