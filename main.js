@@ -251,12 +251,11 @@ function logNodeData(currentNode) {
 
     if (currentNode === null) return;
 
-    console.log(currentNode.data);
+    console.log(currentNode);
 
 
 }
 
 
 const tree = new Tree([1, 9, 15, 17, 20]);
-
-console.log(logNodeData(tree.root));
+tree.levelOrderForEach(logNodeData);
