@@ -90,6 +90,47 @@ class Tree {
     }
 
 
+    levelOrderForEach(callback) {
+
+        if (callback === null) throw new Error("Callback is required");
+
+        const queue = [];
+
+        if (this.root === null) {
+            return;
+        } else {            
+            queue.push(this.root);
+            levelOrderHandler(this.root);
+            
+        }
+        
+        function levelOrderHandler(node) {
+
+            if (queue.length > 0) {
+                    
+                let shifted = queue.shift();
+                callback(shifted.data);
+
+                if (shifted.left !== null) {
+                    queue.push(shifted.left);
+                }
+
+                if (shifted.right !== null) {
+                    queue.push(shifted.right);
+                }
+
+
+                
+            }
+        }
+    }
+
+
+
+
+
+
+
 }
 
 
@@ -198,36 +239,6 @@ function deleteNode(root, value) {
     return root;
 }
 
-function levelOrderForEach(callback) {
-
-    if (callback === null) throw new Error("Callback is required");
-
-
-    const queue = [];
-
-    function levelOrderHandler(node) {
-
-    if (this.root === null) {
-       return;
-    }
-
-        if (node !== null) {
-
-            queue.push(node);
-            queue.shift(node);
-            logNodeData(node);
-
-        }
-
-        levelOrderHandler(node.left);
-    }
-
-
-
-
-
-
-}
 
 // traverse the BST, going through each node and logging it's data property
 
