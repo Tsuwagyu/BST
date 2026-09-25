@@ -92,7 +92,7 @@ class Tree {
 
     levelOrderForEach(callback) {
 
-        if (callback === null) throw new Error("Callback is required");
+        if (typeof callback !== "function") throw new Error("Callback is required");
 
         const queue = [];
 
@@ -100,11 +100,12 @@ class Tree {
             return;
         } else {            
             queue.push(this.root);
-            levelOrderHandler(this.root);
+            //level order handler gets its nodes from the queue itself
+            levelOrderHandler();
             
         }
         
-        function levelOrderHandler(node) {
+        function levelOrderHandler() {
 
             if (queue.length > 0) {
                     
@@ -119,10 +120,14 @@ class Tree {
                     queue.push(shifted.right);
                 }
 
+                // call at end to continue traversal until queue is empty
+                levelOrderHandler();
+
 
                 
             }
         }
+
     }
 
 
