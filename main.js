@@ -131,6 +131,27 @@ class Tree {
     }
 
 
+    inOrderForEach(callback) {
+
+        if (typeof callback !== "function") throw new Error("Callback is required");
+
+        if (this.root === null) return;
+
+        else {
+            inOrderTraversal(this.root);
+        }
+
+        function inOrderTraversal(node) {
+
+            if (node !== null) {
+                inOrderTraversal(node.left);
+                callback(node.data);
+                inOrderTraversal(node.right);
+            }
+        }
+    }
+
+
 
 
 
@@ -261,6 +282,12 @@ function logNodeData(currentNode) {
 function inOrderForEach(callback) {
 
     if (typeof callback !== "function") throw new Error("Callback is required");
+
+    if (this.root === null) return;
+
+    else {
+        inOrderTraversal(this.root);
+    }
 
     function inOrderTraversal(node) {
 
