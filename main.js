@@ -277,30 +277,7 @@ function logNodeData(currentNode) {
 
 }
 
-// in order traversal function
-
-function inOrderForEach(callback) {
-
-    if (typeof callback !== "function") throw new Error("Callback is required");
-
-    if (this.root === null) return;
-
-    else {
-        inOrderTraversal(this.root);
-    }
-
-    function inOrderTraversal(node) {
-
-        if (node !== null) {
-            inOrderTraversal(node.left);
-            callback(node.data);
-            inOrderTraversal(node.right);
-        }
-    }
-}
 
 
-
-
-const tree = new Tree([1, 9, 15, 17, 20]);
-tree.levelOrderForEach(logNodeData);
+const tree = new Tree([1, 5, 9, 15, 17, 18, 20]);
+tree.inOrderForEach(logNodeData);
