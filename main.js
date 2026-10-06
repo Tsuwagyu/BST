@@ -169,6 +169,25 @@ class Tree {
         }
     }
 
+    postOrderForEach(callback) {
+        if (typeof callback !== "function") throw new Error ("Callback is required");
+
+        if (this.root === null) return;
+
+        else {
+            postOrderTraversal(this.root);        
+        }
+
+        function postOrderTraversal(node) {
+            if (node !== null) {
+                postOrderTraversal(node.left);
+                postOrderTraversal(node.right);
+                callback(node.data);
+            }
+        }
+    }
+
+
 
 
 
@@ -299,4 +318,4 @@ function logNodeData(currentNode) {
 
 
 const tree = new Tree([1, 5, 9, 15, 17, 18, 20]);
-tree.preOrderForEach(logNodeData);
+tree.postOrderForEach(logNodeData);
