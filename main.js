@@ -189,25 +189,28 @@ class Tree {
 
     height(value) {
 
-        if (value === null) return undefined;
+        // goal of height is to return a value
 
-        if (this.root === null) return -1;
+        // to get the value we need a node with matching value
 
-        if (value === this.root.data) {
+        // helper function should exist to check for node first
 
-            let leftTreeHeight = height(this.root.left);
-            let rightTreeHeight = height(this.root.right);
+        // Max.math will compare left and right size branches to give us the max height of the BST
 
-            let height = 1 + Math.max(leftTreeHeight, rightTreeHeight);
+        function measureHeight(node) {
+            // accounts for nothing in the BST, if we only had root node then height = 0, if no nodes at all then height = -1 
+            if (node === null) return -1;
 
-            return height;
+            let leftTree = measureHeight(node.left);
+            let rightTree = measureHeight(node.right);
+
+            return 1 + Math.max(leftTree, rightTree);
+
+
 
 
 
         }
-
-
-
         
 
     }
