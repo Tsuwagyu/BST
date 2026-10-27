@@ -196,6 +196,7 @@ class Tree {
         // helper function should exist to check for node first
 
         // Max.math will compare left and right size branches to give us the max height of the BST
+        if (value === this.root.data) return measureHeight(this.root);
 
         function measureHeight(node) {
             // accounts for nothing in the BST, if we only had root node then height = 0, if no nodes at all then height = -1 
@@ -209,8 +210,8 @@ class Tree {
 
 
 
-
         }
+
         
 
     }
@@ -346,4 +347,5 @@ function logNodeData(currentNode) {
 
 
 const tree = new Tree([1, 5, 9, 15, 17, 18, 20]);
-tree.postOrderForEach(logNodeData);
+// tree.postOrderForEach(logNodeData);
+console.log(tree.height(tree.root.data));
