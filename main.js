@@ -187,6 +187,31 @@ class Tree {
         }
     }
 
+    height(value) {
+
+        if (value === null) return undefined;
+
+        if (this.root === null) return -1;
+
+        if (value === this.root.data) {
+
+            let leftTreeHeight = height(this.root.left);
+            let rightTreeHeight = height(this.root.right);
+
+            let height = 1 + Math.max(leftTreeHeight, rightTreeHeight);
+
+            return height;
+
+
+
+        }
+
+
+
+        
+
+    }
+
 
 
 
