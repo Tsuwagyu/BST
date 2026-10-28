@@ -216,6 +216,30 @@ class Tree {
 
     }
 
+    depth(value) {
+        // if the value is found in a node, call measureDepth to get the depth value
+        if (value === this.root.data) return measureDepth(this.root);
+
+        function measureDepth(node) {
+
+            if (node === null) return undefined
+            if (node.data === value) return 0;
+            console.log("match found");
+
+            // if the value is greater than the node value then we go right
+            if (value > node.data) {
+                return measureDepth(node.right.data);
+            }
+
+            if (value < node.data) {
+                return measureDepth(node.left.data);
+            }
+
+
+        }
+
+    }
+
 
 
 
@@ -348,4 +372,5 @@ function logNodeData(currentNode) {
 
 const tree = new Tree([1, 5, 9, 15, 17, 18, 20]);
 // tree.postOrderForEach(logNodeData);
-console.log(tree.height(tree.root.data));
+// console.log(tree.height(tree.root.data));
+console.log(tree.depth(20), "expected 2");
