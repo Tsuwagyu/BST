@@ -220,17 +220,31 @@ class Tree {
 
         function measureDepth(node) {
 
+            // when value isnt in tree, we hit null to return undefined
             if (node === null) return undefined
             if (node.data === value) return 0;
 
             // if the value is greater than the node value then we go right
             if (value > node.data) {
-                return measureDepth(node.right);
+                // + 1 will always occur at the parent node that made the call
+                let resultFirst = measureDepth(node.right);
+                if (resultFirst === undefined) {
+                    return undefined
+                } else {
+                    return 1 + measureDepth(node.right);
+                }
+            }
+            // if value is less than node value then go left
+            if (value < node.data) {
+                let resultNext = measureDepth(node.left);
+                if (resultNext === undefined) {
+                    return undefined
+                } else {
+                    return 1 + measureDepth(node.left);
+                }
             }
 
-            if (value < node.data) {
-                return measureDepth(node.left);
-            }
+            if (resultFirst = undefined) return resultFirst
 
 
         }
