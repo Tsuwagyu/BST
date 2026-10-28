@@ -217,8 +217,6 @@ class Tree {
     }
 
     depth(value) {
-        // if the value is found in a node, call measureDepth to get the depth value
-        if (value === this.root.data) return measureDepth(this.root);
 
         function measureDepth(node) {
 
@@ -236,6 +234,8 @@ class Tree {
 
 
         }
+
+        return measureDepth(this.root);
 
     }
 
