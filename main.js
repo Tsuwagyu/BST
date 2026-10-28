@@ -374,3 +374,6 @@ const tree = new Tree([1, 5, 9, 15, 17, 18, 20]);
 // tree.postOrderForEach(logNodeData);
 // console.log(tree.height(tree.root.data));
 console.log(tree.depth(20), "expected 2");
+console.log(tree.depth(15), "expected 0");
+console.log(tree.depth(9), "expected 1");
+console.log(tree.depth(4), "expected undefined");
