@@ -224,15 +224,14 @@ class Tree {
 
             if (node === null) return undefined
             if (node.data === value) return 0;
-            console.log("match found");
 
             // if the value is greater than the node value then we go right
             if (value > node.data) {
-                return measureDepth(node.right.data);
+                return measureDepth(node.right);
             }
 
             if (value < node.data) {
-                return measureDepth(node.left.data);
+                return measureDepth(node.left);
             }
 
 
