@@ -263,30 +263,24 @@ class Tree {
         // base case to determine if the tree has any nodes
 
 
-        let leftSubtreeHeight = this.measureHeight(node.left.data);
-        let rightSubtreeHeight = this.measureHeight(node.right.data);
-        console.log(leftSubtreeHeight);
-        console.log(rightSubtreeHeight);
+            const check = (node) => {
 
-        function isBalancedHelper() {
+                if (node === null) return true;
 
-            if (node === null) return true;
-            
-            // get depth of left and right subtree
+                let leftSubtreeHeight = this.measureHeight(node.left);
+                let rightSubtreeHeight = this.measureHeight(node.right);
 
-            // if condition to allow for >= 1 statement for balance tolerance
+                if (Math.abs(rightSubtreeHeight - leftSubtreeHeight ) > 1) {
+                    return false;
+                }
 
-            if (Math.abs(rightSubtreeHeight - leftSubtreeHeight ) > 1) {
-                return console.log("This tree is unbalanced");
+                if (Math.abs(rightSubtreeHeight - leftSubtreeHeight) <= 1) {
+                    return check(node.left) && check(node.right);
+                }
+
             }
 
-            if (Math.abs(rightSubtreeHeight - leftSubtreeHeight) <= 1) {
-                return console.log("This tree is balanced :)");
-            }
 
-        }
-
-        return isBalancedHelper(Tree);
 
 
 
