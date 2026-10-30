@@ -267,7 +267,7 @@ class Tree {
             // get depth of left and right subtree
 
             let leftSubtreeDepth = depth(this.root.left.data);
-            let rightSubtreeDepth = depth(this.root.right.data);
+            let rightSubtreeHeight = height(this.root.right.data);
 
             // if condition to allow for >= 1 statement for balance tolerance
 
