@@ -254,21 +254,27 @@ class Tree {
     }
 
     isBalanced() {
-
-        let node = this.root;
         // check tree if it is balanced
 
         // helper function to determine what conditions make a tree balanced
 
         // base case to determine if the tree has any nodes
+            function measureHeight(node) {
+                if (node === null) return -1;
+
+                let leftTree = measureHeight(node.left);
+                let rightTree = measureHeight(node.right);
+
+                return 1 + Math.max(leftTree, rightTree);
+            }
 
 
             const check = (node) => {
 
                 if (node === null) return true;
 
-                let leftSubtreeHeight = this.measureHeight(node.left);
-                let rightSubtreeHeight = this.measureHeight(node.right);
+                let leftSubtreeHeight = measureHeight(node.left);
+                let rightSubtreeHeight = measureHeight(node.right);
 
                 if (Math.abs(rightSubtreeHeight - leftSubtreeHeight ) > 1) {
                     return false;
@@ -278,6 +284,8 @@ class Tree {
 
 
             }
+
+        return check(this.root);
 
 
 
