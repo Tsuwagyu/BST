@@ -274,9 +274,8 @@ class Tree {
                     return false;
                 }
 
-                if (Math.abs(rightSubtreeHeight - leftSubtreeHeight) <= 1) {
-                    return check(node.left) && check(node.right);
-                }
+                return check(node.left) && check(node.right);
+
 
             }
 
