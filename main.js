@@ -266,10 +266,18 @@ class Tree {
             
             // get depth of left and right subtree
 
-            let leftSubtreeDepth = depth(this.root.left.data);
+            let leftSubtreeHeight = height(this.root.left.data);
             let rightSubtreeHeight = height(this.root.right.data);
 
             // if condition to allow for >= 1 statement for balance tolerance
+
+            if (Math.abs(rightSubtreeHeight - leftSubtreeHeight ) > 1) {
+                return console.log("This tree is unbalanced");
+            }
+
+            if (Math.abs(rightSubtreeHeight - leftSubtreeHeight) <= 1) {
+                console.log("This tree is balanced :)");
+            }
 
         }
 
