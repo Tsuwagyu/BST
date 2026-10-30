@@ -252,6 +252,30 @@ class Tree {
         return measureDepth(this.root);
 
     }
+
+    isBalanced() {
+        // check tree if it is balanced
+
+        // helper function to determine what conditions make a tree balanced
+
+        // base case to determine if the tree has any nodes
+
+        function isBalancedHelper() {
+
+            if (this.root === null) return undefined;
+            
+            // get depth of left and right subtree
+
+            let leftSubtreeDepth = depth(this.root.left.data);
+            let rightSubtreeDepth = depth(this.root.right.data);
+
+            // if condition to allow for >= 1 statement for balance tolerance
+
+        }
+
+
+
+    }
     
 
 
