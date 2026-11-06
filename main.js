@@ -425,12 +425,15 @@ function logNodeData(currentNode) {
 
 function rebalance(tree) {
     if (tree.isBalanced() === true) {
-        console.log(tree.preOrderForEach(tree.node.data)), 
-        console.log(tree.postOrderForEach(tree.node)), 
-        console.log(tree.inOrderForEach(tree.node));
+        // call method, pass value in, log results
+        tree.preOrderForEach((value) => console.log(value));
+        tree.postOrderForEach((value) => console.log(value));
+        tree.inOrderForEach((value) => console.log(value));
     }
+
+    // code for rebalancing
     if (tree.isBalanced() === false) {
-        return console.log("it's unbalanced");
+        rebalance(tree);
     }
 }
 
