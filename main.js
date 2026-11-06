@@ -421,10 +421,24 @@ function logNodeData(currentNode) {
 
 }
 
+// check conditions for an unbalanced tree
+
+function rebalance(tree) {
+    if (tree.isBalanced() === true) {
+        console.log(tree.preOrderForEach(tree.node.data)), 
+        console.log(tree.postOrderForEach(tree.node)), 
+        console.log(tree.inOrderForEach(tree.node));
+    }
+    if (tree.isBalanced() === false) {
+        return console.log("it's unbalanced");
+    }
+}
 
 
 
-const tree = new Tree([1, 5, 9, 15, 17, 18, 20]);
+
+const tree = new Tree([1, 5, 9, 15, 17, 18, 20, 22, 30, 34, 40, 52, 59]);
 // tree.postOrderForEach(logNodeData);
 // console.log(tree.height(tree.root.data));
-console.log(tree.isBalanced());
+// console.log(tree.isBalanced());
+console.log(rebalance(tree));
