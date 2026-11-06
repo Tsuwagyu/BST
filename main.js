@@ -424,6 +424,7 @@ function logNodeData(currentNode) {
 // check conditions for an unbalanced tree
 
 function rebalance(tree) {
+    
 
     let valueContainer = [];
 
@@ -434,9 +435,13 @@ function rebalance(tree) {
         tree.inOrderForEach((value) => console.log(value));
     }
 
+
+
     if (tree.isBalanced() === false) {
         tree.inOrderForEach((value => valueContainer.push(value)));
-        buildTree(valueContainer, 0, valueContainer.length - 1);
+        let newRoot = buildTree(valueContainer, 0, valueContainer.length - 1);
+        tree.root = newRoot;
+        return tree.root;
     }
 
 
@@ -446,7 +451,8 @@ function rebalance(tree) {
 
 
 const tree = new Tree([1, 5, 9, 15, 17, 18, 20, 22, 30, 34, 40, 52, 59]);
-// tree.postOrderForEach(logNodeData);
-// console.log(tree.height(tree.root.data));
-// console.log(tree.isBalanced());
-// console.log(rebalance(tree));
+tree.insertAt(100), tree.insertAt(120), tree.insertAt(140);
+
+console.log(rebalance(tree));
+console.log(tree.isBalanced());
+console.log(tree);
