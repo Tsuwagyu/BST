@@ -1,49 +1,23 @@
-# BST
-Binary Search Tree assignment
+## Binary Search Tree
+- I built a binary search tree as a part of the odin project cirriculum, it's meant to allow for fast lookups, insertion, and deletion of data items.
+- I used this project to strengthen my understanding of recursion, tree traversal, node and subtree connection during insertion, deletion, and rebalancing
+- Node.js to test functionality locally.
+- The tree stores numeric values and starts balanced, insertions and deletions can change the balance. Rebalancing is handled explicitly. 
 
-Currently a work in progress. Core tree operations and all four traversals have been implemented. Height, depth, balance checking, rebalancing, and a dedicated automated test setup planned.
+## Composition 
+- It's composed of a class which accepts an array when initialized.
+- This does not use module exports, to test it I have log statements at the bottom to show the following:
+  - The tree is created from an array of random numbers less than 100 > we check the tree is balanced, then print all the elements in the following orders: 
+  - Preorder, postorder, and levelorder methods
+  - All 3 of the methods use a callback function and traverse the Tree in their respective depth first order and pass each value to the callback
+  - We then use the `insertAt()` method to add numbers over 100 to the tree > we check that `Tree` is now unbalanced with the new insertions > we use `rebalance()` method on the `Tree` and ensure that the new version comes out balanced 
 
-Reason for building
+## Features
+- Build a balanced tree from an array, remove duplicates and sorting numerically.
+- Search for existing values and insert values while preventing duplicates.
+- Delete nodes with 0, 1, or 2 children
+- Traverse values in level order, in order, pre order, and post order.
+- Calculate depth and check tree balance
+- Rebuild an unbalanced tree.
 
-It's to stregnthen my understanding of data structures by implementing their behavior directly. The most important parts have been reasoning through recursive base cases, reconnecting subtrees post deletion, and understanding why depth first and breadth first traversal need different approaches.
 
-Current functionality
-- Build an initially balanced tree from an array of numbers, removing duplicates and sorting the values first
-- Search for a value using the tree's ordering
-- Insert values while preventing duplicates
-- Delete nodes with zero, one, or two children using an in order successor for the two child case
-- Visit values in level-order, post-order, pre-order through callbacks
-
-Run locally
-
-git clone https://github.com/Tsuwagyu/BST.git
-cd BST
-node main.js
-
-The current demonstration at the bottom of main.js builds a tree and logs its post-traversal
-const tree = new Tree([1, 5, 9, 15, 17, 18, 20]);
-tree.postOrderForEach(logNodeData);
-
-The classes currently live in main.js without module exports. To see other operations edit the demonstration in the file.
-
-Available methods
-
-- includes(value)	Returns whether a value exists in the tree.
-- insertAt(value)	Inserts a value if it is not already present.
-- deleteItem(value)	Removes a value and updates the root when necessary.
-- levelOrderForEach(callback)	Visits values breadth-first using a FIFO queue.
-- inOrderForEach(callback)	Visits left subtree, current value, then right subtree.
-- preOrderForEach(callback)	Visits current value, left subtree, then right subtree.
-- postOrderForEach(callback)	Visits left subtree, right subtree, then current value.
-
-Traversal callbacks recieve stored value, each traversal requires a function and throws an error if one isn't provided
-
-Next components to add
-- Height and depth calculations
-- Balance checking and rebalancing
-- Automated test for empty trees, duplicate values, root deletion, traversal order
-
-The tree is balanced during the initial construction, insertions and deletions do not automatically rebalance it. Current checks use console rather than automated test suite
-
-Acknowledgement
-- This is based on The Odin Project Binary Search tree assignment. The implementation and comments document my learning as I continue to work on this.
