@@ -84,11 +84,3 @@ rebalance()
 if rebalance() is built as a function
 - it takes a instance of Tree, then we run isBalanced method on the Tree
 - if isBalanced returns false then we call buildTree function
-- 
-
-   if (tree.isBalanced() === true) {
-        // call method, pass value in, log results
-        tree.preOrderForEach((value) => console.log(value));
-        tree.postOrderForEach((value) => console.log(value));
-        tree.inOrderForEach((value) => console.log(value));
-    }
